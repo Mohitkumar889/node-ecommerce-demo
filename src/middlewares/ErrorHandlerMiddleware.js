@@ -5,12 +5,11 @@ const ResponseMiddleware = require("./ResponseMiddleware");
 
 module.exports = (handler) => {
     return async (req, res, next) => {
-        
-        try{
+
+        try {
             await handler(req, res, next);
-            
-        }catch(ex){
-          console.log(handler);
+
+        } catch (ex) {
             let name = handler.name;
             console.log(colors.red(` ## ${current_time} ## Exception in ${name}:  ${ex.message}`), ex);
 

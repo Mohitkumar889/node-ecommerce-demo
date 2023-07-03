@@ -21,7 +21,7 @@ module.exports = () => {
       password = await helpers().hashPassword(password);
       let userRole = "Admin";
 
-      admin = { email, password, name , userRole, mobileNumber, countryCode};
+      admin = { email, password, name, userRole, mobileNumber, countryCode };
 
       let result = await AdminService().registerAdmin(admin);
 
@@ -89,6 +89,6 @@ module.exports = () => {
 
   return {
     register,
-    
+    login
   };
 };

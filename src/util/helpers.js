@@ -6,7 +6,7 @@ const messages = require("./messages");
 
 
 module.exports = function () {
- 
+
   const generateOTP = (length = 6) => {
     return Math.floor(100000 + Math.random() * 900000);
   };
@@ -29,7 +29,7 @@ module.exports = function () {
     let result = await bcrypt.compare(password, hash);
     return result;
   };
- 
+
   const getErrorMessage = (errors) => {
     console.log("Helpers => getErrorMessage");
 
@@ -46,12 +46,13 @@ module.exports = function () {
       return "Something is wrong, Please try again later !!" + ex.message;
     }
   };
-  
+
 
   return {
-   
     createJWT,
     hashPassword,
-    getErrorMessage
+    getErrorMessage,
+    checkPassword,
+    generateOTP
   };
 };
