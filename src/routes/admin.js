@@ -15,12 +15,13 @@ adminRouter.post(
 );
 
 adminRouter.post(
-	"/login",
-	AuthValidator().validateAdminLogin,
-	ErrorHandlerMiddleware(AdminController().login),
-	ResponseMiddleware
+  "/login",
+  AuthValidator().validateAdminLogin,
+  ErrorHandlerMiddleware(AdminController().login),
+  ResponseMiddleware
 );
 
+adminRouter.use("/category", require("./category"));
 
 
 module.exports = adminRouter;

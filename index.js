@@ -3,6 +3,7 @@ const server = require("./config/server");
 const cors = require("cors");
 const PORT = server.port || 9090;
 const app = express();
+
 app.use(express.static(__dirname));
 var bodyParser = require("body-parser");
 const compression = require("compression");
