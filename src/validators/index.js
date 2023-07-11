@@ -2,6 +2,7 @@ const validator = require("node-input-validator")
 const ResponseMiddleware = require("../middlewares/ResponseMiddleware.js");
 const helpers = require("../util/helpers.js");
 const { models } = require("../models");
+const mongoose = require('mongoose');
 validator.extend("unique", async function ({ value, args }) {
     console.log("ValidatorsIndex => unique", args);
     console.log(args);
@@ -38,7 +39,7 @@ validator.extend("exists", async function ({ value, args }) {
     console.log(args);
     let result = await models[args[0]]
         .find({
-            [args[1]]: value
+            [args[1]]: new mongoose.Types.ObjectId(value)
         })
 
     return result.length > 0 ? true : false
@@ -98,6 +99,9 @@ module.exports = {
         admin: {
             existsEmail: "required|email|exists:Admin,email|maxLength:50",
 
+        },
+        category: {
+            IdExists: "required|size:24|exists:Category,_id"
         }
 
 

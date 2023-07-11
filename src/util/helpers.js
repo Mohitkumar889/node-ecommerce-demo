@@ -47,12 +47,24 @@ module.exports = function () {
     }
   };
 
+  const filterObject = (obj) => {
+    const filteredObj = {};
+
+    for (const [key, value] of Object.entries(obj)) {
+      if (value !== '' && value !== null && value !== undefined) {
+        filteredObj[key] = value;
+      }
+    }
+
+    return filteredObj;
+  }
 
   return {
     createJWT,
     hashPassword,
     getErrorMessage,
     checkPassword,
-    generateOTP
+    generateOTP,
+    filterObject
   };
 };

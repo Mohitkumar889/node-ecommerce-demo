@@ -11,7 +11,10 @@ const CategorySchema = new Schema(
             default: "",
         },
     },
-    { timestamps: true }
+    {
+        timestamps: true,
+        versionKey: false
+    }
 );
 
 //userSchema.virtual('ID').get(function() { return this._id; });

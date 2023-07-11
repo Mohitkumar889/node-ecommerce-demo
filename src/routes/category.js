@@ -29,4 +29,13 @@ categoryRouter.post("/add",
 
 );
 
+categoryRouter.put("/update",
+    upload.single('image'),
+    AuthMiddleware().verifyAdminToken,
+    CategoryValidator().updateValidator,
+    ErrorHandlerMiddleware(CategoryController().update),
+    ResponseMiddleware
+
+);
+
 module.exports = categoryRouter;
